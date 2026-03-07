@@ -13,7 +13,7 @@ body {
 /* ===== WELCOME SECTION ===== */
 .welcome {
     background: #f3eee9;
-    /* light beige like screenshot */
+
     color: #1d1d1f;
 }
 
@@ -23,22 +23,31 @@ body {
     padding: 10px 32px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
 .welcome-topbar-inner {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 18px;
     flex: 1;
+    justify-content: center;
 }
 
-.logo img {
-    height: 44px;
+.anna-logo {
+    height: 54px;
     width: auto;
-    
+    flex-shrink: 0;
 }
+
+.welcome-topbar::after {
+    content: '';
+    height: 54px;
+    width: 120px; 
+    flex-shrink: 0;
+}
+
+    
+
 
 .welcome-topbar-text {
     font-size: 18px;
@@ -587,7 +596,7 @@ body {
 
 /* ================= FEATURE IMAGE ================= */
 
-.feature-image{
+.feature-image {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -601,11 +610,11 @@ body {
     background-image: url(/images/specializovane-riesenia.jpg)
 }
 
-.feature-image-3{
+.feature-image-3 {
     background-image: url(/images/specializovane-riesenie-6.jpg);
 }
 
-.feature-image-4{
+.feature-image-4 {
     background-image: url(/images/specializovane-riesenie-4.jpg);
 }
 
@@ -686,7 +695,7 @@ body {
     margin-bottom: 24px;
 }
 
-.profile-section > img {
+.profile-section>img {
     width: 80px;
     height: 80px;
     border-radius: 50%;
