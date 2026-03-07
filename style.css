@@ -20,17 +20,24 @@ body {
 /* Top banner */
 .welcome-topbar {
     background: #4f6e7b;
-    /* muted teal/blue-grey */
-    padding: 14px 16px;
+    padding: 10px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .welcome-topbar-inner {
-    max-width: 1200px;
-    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 18px;
+    flex: 1;
+}
+
+.logo img {
+    height: 44px;
+    width: auto;
+    
 }
 
 .welcome-topbar-text {
@@ -78,6 +85,7 @@ body {
     color: #3f5964;
     /* headline teal-grey */
     margin-bottom: 16px;
+    margin-top: 60spx;
 }
 
 .welcome-subtitle {
@@ -133,14 +141,14 @@ body {
     color: #111;
 }
 
-.icon {
+.service-icon svg {
     width: 34px;
     height: 34px;
-    fill: none;
     stroke: currentColor;
-    stroke-width: 2;
+    stroke-width: 1.75;
     stroke-linecap: round;
     stroke-linejoin: round;
+    fill: none;
 }
 
 .service-title {

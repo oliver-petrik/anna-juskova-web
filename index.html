@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Funkcie a Výhody - Well-Aging Poradenstvo</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 
 <body>
@@ -13,6 +14,7 @@
   <!-- ===== WELCOME ===== -->
   <section class="welcome">
     <div class="welcome-topbar">
+      <div class="logo"><img src="/images/logo/logo.png" alt="logo"></div>
       <div class="welcome-topbar-inner">
         <p class="welcome-topbar-text">Získajte bezplatný E-Book!</p>
         <a class="welcome-topbar-btn" href="#ebook">Stiahnuť</a>
@@ -34,10 +36,7 @@
       <div class="welcome-services">
         <article class="service-card">
           <div class="service-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" class="icon">
-              <path d="M20 3s-7 1-11 5-5 11-5 11 7-1 11-5 5-11 5-11Z"></path>
-              <path d="M9 14c2-2 6-6 11-9"></path>
-            </svg>
+            <i data-lucide="heart-pulse"></i>
           </div>
           <h3 class="service-title">Anti-Aging Poradenstvo</h3>
           <p class="service-text">
@@ -47,11 +46,7 @@
 
         <article class="service-card">
           <div class="service-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" class="icon">
-              <path d="M7 7h10"></path>
-              <path d="M6 10h12"></path>
-              <path d="M7 10v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-9"></path>
-            </svg>
+            <i data-lucide="sparkles"></i>
           </div>
           <h3 class="service-title">Kozmetické Poradenstvo</h3>
           <p class="service-text">
@@ -61,12 +56,7 @@
 
         <article class="service-card">
           <div class="service-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" class="icon">
-              <path d="M4 3v7a2 2 0 0 0 2 2h1v9"></path>
-              <path d="M8 3v7"></path>
-              <path d="M12 3v18"></path>
-              <path d="M20 3v9a3 3 0 0 1-3 3h-1v6"></path>
-            </svg>
+            <i data-lucide="salad"></i>
           </div>
           <h3 class="service-title">Výživové Poradenstvo</h3>
           <p class="service-text">
@@ -402,6 +392,8 @@
       </div>
     </div>
   </section>
+
+  <script>lucide.createIcons();</script>
 
   <script>
     const faqItems = document.querySelectorAll('.faq-item');
