@@ -13,7 +13,6 @@ body {
 /* ===== WELCOME SECTION ===== */
 .welcome {
     background: #f3eee9;
-
     color: #1d1d1f;
 }
 
@@ -39,16 +38,6 @@ body {
     flex-shrink: 0;
 }
 
-.welcome-topbar::after {
-    content: '';
-    height: 54px;
-    width: 120px; 
-    flex-shrink: 0;
-}
-
-    
-
-
 .welcome-topbar-text {
     font-size: 18px;
     font-weight: 700;
@@ -60,7 +49,6 @@ body {
     padding: 10px 20px;
     border-radius: 999px;
     background: #2f5662;
-    /* darker pill */
     color: #fff;
     text-decoration: none;
     font-weight: 700;
@@ -71,19 +59,6 @@ body {
 .welcome-topbar-btn:hover {
     background: #284a55;
     transform: translateY(-1px);
-}
-.welcome-topbar {
-    background: #4f6e7b;
-    padding: 10px 32px;
-    display: flex;
-    align-items: center;
-}
-
-.welcome-topbar-inner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
 }
 
 .topbar-right {
@@ -112,14 +87,170 @@ body {
     opacity: 1;
 }
 
+/* ===== HAMBURGER BUTTON ===== */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    flex-shrink: 0;
+    z-index: 1001;
+}
 
+.hamburger-line {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #ffffff;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+}
+
+/* Animate to X when active */
+.hamburger.active .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.hamburger.active .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ===== MOBILE MENU OVERLAY ===== */
+.mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+}
+
+/* ===== MOBILE SLIDE-IN MENU ===== */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background: #4f6e7b;
+    z-index: 999;
+    padding: 90px 32px 48px;
+    flex-direction: column;
+    gap: 8px;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-menu.active {
+    transform: translateX(0);
+}
+
+.mobile-nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 32px;
+}
+
+.mobile-nav-link {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    transition: opacity 0.2s ease, padding-left 0.2s ease;
+    opacity: 0.9;
+}
+
+.mobile-nav-link:hover {
+    opacity: 1;
+    padding-left: 8px;
+}
+
+.mobile-ebook-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    background: #2f5662;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: background 0.2s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+.mobile-ebook-btn:hover {
+    background: #284a55;
+    transform: translateY(-1px);
+}
+
+/* ===== RESPONSIVE: show hamburger, hide desktop nav ===== */
+@media (max-width: 760px) {
+    .topbar-right {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .mobile-menu-overlay {
+        display: block;
+        pointer-events: none;
+    }
+
+    .mobile-menu-overlay.active {
+        pointer-events: auto;
+    }
+
+    .mobile-menu {
+        display: flex;
+    }
+
+    /* Keep logo centered on mobile */
+    .welcome-topbar-inner {
+        flex: 1;
+        justify-content: center;
+    }
+
+    /* Remove the ::after pseudo-element spacer on mobile since hamburger takes its place */
+    .welcome-topbar::after {
+        display: none;
+    }
+}
 
 /* Main wrapper */
 .welcome-inner {
     max-width: 1200px;
     margin: 0 auto;
     padding: 64px 20px 70px;
-
 }
 
 /* Hero */
@@ -133,9 +264,7 @@ body {
     letter-spacing: -1px;
     font-weight: 800;
     color: #3f5964;
-    /* headline teal-grey */
     margin-bottom: 16px;
-    margin-top: 60spx;
 }
 
 .welcome-subtitle {
@@ -340,6 +469,9 @@ body {
     justify-content: center;
     overflow: hidden;
     position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .feature-image img {
@@ -347,8 +479,6 @@ body {
     height: 100%;
     object-fit: cover;
 }
-
-
 
 /* ===== ANNA / ABOUT SECTION ===== */
 
@@ -440,6 +570,8 @@ body {
     justify-content: center;
     overflow: hidden;
     background-image: url(/images/anna.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .anna-image img {
@@ -630,20 +762,14 @@ body {
     box-shadow: 0 8px 20px rgba(34, 73, 90, 0.3);
 }
 
-/* ================= FEATURE IMAGE ================= */
-
-.feature-image {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
+/* ================= FEATURE IMAGES ================= */
 
 .feature-image-1 {
-    background-image: url(/images/specializovane-riesenie-5.jpg)
+    background-image: url(/images/specializovane-riesenie-5.jpg);
 }
 
 .feature-image-2 {
-    background-image: url(/images/specializovane-riesenia.jpg)
+    background-image: url(/images/specializovane-riesenia.jpg);
 }
 
 .feature-image-3 {
@@ -653,7 +779,6 @@ body {
 .feature-image-4 {
     background-image: url(/images/specializovane-riesenie-4.jpg);
 }
-
 
 /* ================= REVIEWS HEADER ================= */
 
@@ -795,7 +920,6 @@ body {
     .feature-image {
         height: 400px;
     }
-
 }
 
 @media (max-width: 768px) {
@@ -847,7 +971,6 @@ body {
     .testimonial-card {
         padding: 30px;
     }
-
 }
 
 /* ================= FAQ SECTION ================= */
